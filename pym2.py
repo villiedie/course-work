@@ -2,7 +2,7 @@ import pymorphy2
 morph = pymorphy2.MorphAnalyzer()
 inlo = input("Введите слово:")
 p = morph.parse(inlo)[0]
-if p.tag.POS == 'NOUN' or p.tag.POS == 'ADJF' or p.tag.POS == 'PRTF' or p.tag.POS == 'NUMR' or p.tag.POS == 'NPRO':
+if p.tag.POS in ['NOUN', 'ADJF', 'PRTF', 'NUMR', 'NPRO']:
     print("Падеж слова ")
     if p.tag.case == 'nomn':
         print("Именительный")
@@ -29,6 +29,3 @@ if p.tag.number == 'sing':
 else:
     print("Множественное число")
 print("Нормальная форма слова: ", p.normal_form)
-
-
-
