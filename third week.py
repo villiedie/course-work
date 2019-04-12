@@ -25,28 +25,25 @@ def alls(filename):
         pik = json.loads(line)
         for i in range(0, len(pik['text_tags']) - 1):
             if pik['text_tags'][i][2] == "A" and pik['text_tags'][i+1][2] == "S":
+                lengtha += 1
                 if str(pik['text_tags'][i])+str(pik['text_tags'][i+1]) not in a:
                     a[str(pik['text_tags'][i])+str(pik['text_tags'][i+1])] = 1
-                    lengtha += 1
                 elif str(pik['text_tags'][i])+str(pik['text_tags'][i+1]) in a:
                     a[str(pik['text_tags'][i]) + str(pik['text_tags'][i + 1])] += 1
-                    lengtha += 1
             if pik['text_tags'][i][2] == "S" and pik['text_tags'][i+1][2] == "S" \
                     and pik['text_tags'][i+1][3] == "Genitive":
+                lengthc += 1
                 if str(pik['text_tags'][i])+str(pik['text_tags'][i+1]) not in c:
                     c[str(pik['text_tags'][i])+str(pik['text_tags'][i+1])] = 1
-                    lengthc += 1
                 elif str(pik['text_tags'][i])+str(pik['text_tags'][i+1]) in c:
                     c[str(pik['text_tags'][i]) + str(pik['text_tags'][i + 1])] += 1
-                    lengthc += 1
             if pik['text_tags'][i][2] == "S" and pik['text_tags'][i+1][2] == "S" \
                     and pik['text_tags'][i+1][3] == "Instrumental":
+                lengthd += 1
                 if str(pik['text_tags'][i])+str(pik['text_tags'][i+1]) not in d:
                     d[str(pik['text_tags'][i])+str(pik['text_tags'][i+1])] = 1
-                    lengthd += 1
                 elif str(pik['text_tags'][i])+str(pik['text_tags'][i+1]) in d:
                     d[str(pik['text_tags'][i]) + str(pik['text_tags'][i + 1])] += 1
-                    lengthd += 1
         cat = pik['cat3']
         lengthall += len(pik['text_tags'])
         with open("%s.txt" % cat, 'a', encoding='utf-8') as g:
